@@ -1,34 +1,48 @@
+// src/components/LoginPage.jsx
+
 import React, { useState } from 'react';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import firebaseConfig from '../firebaseConfig';
+import './LoginPage.css';
+
+firebase.initializeApp(firebaseConfig);
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogin = () => {
-    // Implement your login logic here
-    // Check if username and password are correct
-    // If correct, navigate to Dashboard
-    // If incorrect, display error message
+  const handleLogin = async () => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      // Redirect or perform actions after successful login
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <div className="login-page">
-      <h1>Login</h1>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+      <div className="login-container">
+        <h2>Attendance Management System</h2>
+        <form className="login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleLogin}>Login</button>
+        </form>
+        {error && <p className="error-message">{error}</p>}
+      </div>
     </div>
   );
 };

@@ -29,9 +29,13 @@
 
 // src/App.js
 
+// src/App.js
+
+// src/App.js
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthPage from './components/AuthPage';
+import LoginPage from './components/LoginPage';
 import './App.css';
 
 const App = () => {
@@ -39,7 +43,8 @@ const App = () => {
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/login" element={<AuthPage />} />
+          {/* Define a route for the root URL */}
+          <Route path="/" element={<LoginPage />} />
           {/* Add more routes for other pages */}
         </Routes>
       </div>
@@ -48,3 +53,5 @@ const App = () => {
 };
 
 export default App;
+
+
