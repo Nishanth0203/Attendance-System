@@ -1,10 +1,9 @@
-// src/components/LoginPage.jsx
-
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import firebaseConfig from '../firebaseConfig';
 import './LoginPage.css';
+import { Navigate } from 'react-router-dom';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -16,11 +15,17 @@ const LoginPage = () => {
   const handleLogin = async () => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      // Redirect or perform actions after successful login
+      // Redirect to HomePage after successful login
+      // return <Navigate to="/home" />;
     } catch (error) {
-      setError(error.message);
+      setError('Invalid email or password. Please try again.');
+      setTimeout(() => {
+        setError('');
+      }, 5000);
     }
   };
+  
+  
 
   return (
     <div className="login-page">
