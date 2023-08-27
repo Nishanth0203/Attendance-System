@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-/* App.css */
 
 .app {
   display: flex;
@@ -10,7 +9,6 @@
   min-height: 100vh;
 }
 
-/* ... (other styles) */
 
 .App-logo {
   height: 40vmin;
@@ -45,4 +43,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 2px;
+  width: 100%;
+  margin-top: auto; 
 }

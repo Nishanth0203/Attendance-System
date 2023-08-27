@@ -1,4 +1,4 @@
-// src/components/AuthPage.jsx
+
 
 import React, { useState } from 'react';
 import firebase from 'firebase/compat/app';
@@ -15,7 +15,7 @@ const AuthPage = () => {
   const handleLogin = async () => {
     try {
       await firebase.auth().signInWithEmailAndPassword(email, password);
-      // Redirect or perform actions after successful login
+
     } catch (error) {
       setError(error.message);
     }
