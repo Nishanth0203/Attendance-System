@@ -13,7 +13,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
         </Routes>
         <footer className="footer">
-          <p>&copy; 2023 Your School Name. All rights reserved.</p>
+          <p>&copy; 2023 Sample Project. All rights reserved.</p>
         </footer>
       </div>
     </Router>
